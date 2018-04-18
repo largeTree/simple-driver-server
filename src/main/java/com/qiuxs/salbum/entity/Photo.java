@@ -1,6 +1,5 @@
 package com.qiuxs.salbum.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -8,13 +7,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.qiuxs.salbum.frm.persistent.BaseEntity;
+
 /**
  * 图片
+ * 
  * @author qiuxs
  *
  */
 @Entity
-public class Photo implements Serializable {
+public class Photo extends BaseEntity {
 
 	private static final long serialVersionUID = 4641363577704971844L;
 

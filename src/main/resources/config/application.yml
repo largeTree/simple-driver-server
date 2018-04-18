@@ -1,0 +1,6 @@
+spring:
+  datasource:
+    url: jdbc:mysql://hd137:3306/salbum?characterEncoding=utf8
+    username: root
+    password: 1162796928@Qiu
+    driver-class-name: com.mysql.jdbc.Driver

@@ -1,6 +1,5 @@
 package com.qiuxs.salbum.entity;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -8,19 +7,25 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.qiuxs.salbum.frm.persistent.BaseEntity;
+
 /**
  * 用户
+ * 
  * @author qiuxs
  *
  */
 @Entity
-public class User implements Serializable {
+public class User extends BaseEntity {
 
 	private static final long serialVersionUID = 634070881511721130L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+
+	/** 账号 */
+	private String code;
 
 	/** 用户名 */
 	private String userName;
@@ -40,6 +45,14 @@ public class User implements Serializable {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
 	}
 
 	public String getUserName() {
