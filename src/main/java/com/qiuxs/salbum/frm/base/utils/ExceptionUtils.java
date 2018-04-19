@@ -14,10 +14,10 @@ public class ExceptionUtils {
 	 * @param errorCode
 	 * @param msg
 	 */
-	public static void throwLogicalException(int errorCode,String msg) {
+	public static void throwLogicalException(int errorCode, String msg) {
 		throw new LogicException(errorCode, msg);
 	}
-	
+
 	/**
 	 * 抛出逻辑异常
 	 * 
@@ -67,7 +67,7 @@ public class ExceptionUtils {
 	 * @return
 	 */
 	private static int genErrorCode() {
-		return (int) (Math.random() * 9 + 1 * 1000000);
+		return (int) ((Math.random() * 9 + 1) * 100000);
 	}
 
 	/**

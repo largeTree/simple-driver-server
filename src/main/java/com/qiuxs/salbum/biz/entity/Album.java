@@ -1,4 +1,4 @@
-package com.qiuxs.salbum.entity;
+package com.qiuxs.salbum.biz.entity;
 
 import java.util.Date;
 
@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.qiuxs.salbum.frm.persistent.BaseEntity;
+import com.qiuxs.salbum.frm.persistent.entiry.IBaseEntity;
 
 /**
  * 相册
@@ -16,7 +16,7 @@ import com.qiuxs.salbum.frm.persistent.BaseEntity;
  *
  */
 @Entity
-public class Album extends BaseEntity {
+public class Album implements IBaseEntity<Long> {
 
 	private static final long serialVersionUID = -3433255130704068846L;
 

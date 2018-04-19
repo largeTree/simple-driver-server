@@ -12,9 +12,9 @@ import com.alibaba.fastjson.JSONObject;
 import com.qiuxs.salbum.frm.base.utils.ExceptionUtils;
 import com.qiuxs.salbum.frm.base.utils.JsonUtils;
 
-public class BaseController {
+public abstract class BaseController {
 
-	private static Logger log = LogManager.getLogger(BaseController.class);
+	protected static Logger log = LogManager.getLogger(BaseController.class);
 
 	@ExceptionHandler
 	public String handlerException(Throwable e) {
@@ -26,13 +26,13 @@ public class BaseController {
 		if (rows == null) {
 			rows = new ArrayList<>();
 		}
-		return this.responseRes(rows, (long)rows.size());
+		return this.responseRes(rows, (long) rows.size());
 	}
-	
+
 	protected String responseRes(List<?> rows, Long count) {
 		return this.responseRes(rows, count, null);
 	}
-	
+
 	protected String responseRes(List<?> rows, Long count, Map<String, ? extends Number> sumrow) {
 		JSONObject res = this.defaultResponse();
 		JSONObject data = new JSONObject();

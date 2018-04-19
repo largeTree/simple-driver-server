@@ -1,4 +1,4 @@
-package com.qiuxs.salbum.entity;
+package com.qiuxs.salbum.biz.entity;
 
 import java.util.Date;
 
@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.qiuxs.salbum.frm.persistent.BaseEntity;
+import com.qiuxs.salbum.frm.persistent.entiry.IBaseEntity;
 
 /**
  * 图片
@@ -16,7 +16,7 @@ import com.qiuxs.salbum.frm.persistent.BaseEntity;
  *
  */
 @Entity
-public class Photo extends BaseEntity {
+public class Photo implements IBaseEntity<Long> {
 
 	private static final long serialVersionUID = 4641363577704971844L;
 
