@@ -1,8 +1,8 @@
-package com.qiuxs.salbum.frm.persistent.service;
+package com.qiuxs.frm.persistent.service;
 
 import java.io.Serializable;
 
-import com.qiuxs.salbum.frm.persistent.entiry.IBaseEntity;
+import com.qiuxs.frm.persistent.entiry.IBaseEntity;
 
 public interface IPropertyService<PK extends Serializable, T extends IBaseEntity<PK>> {
 

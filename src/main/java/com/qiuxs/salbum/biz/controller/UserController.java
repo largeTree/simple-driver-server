@@ -1,14 +1,14 @@
-package com.qiuxs.salbum.web.controller;
+package com.qiuxs.salbum.biz.controller;
 
 import javax.annotation.Resource;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.qiuxs.frm.web.controller.AbstractDataController;
 import com.qiuxs.salbum.biz.dao.UserDao;
 import com.qiuxs.salbum.biz.entity.User;
 import com.qiuxs.salbum.biz.service.UserService;
-import com.qiuxs.salbum.frm.web.controller.AbstractDataController;
 
 @RestController
 @RequestMapping(value = "/api/user", produces = "application/json; charset=UTF-8")

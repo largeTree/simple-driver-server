@@ -1,4 +1,4 @@
-package com.qiuxs.salbum.frm.web.controller;
+package com.qiuxs.frm.web.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,8 +9,9 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.alibaba.fastjson.JSONObject;
-import com.qiuxs.salbum.frm.base.utils.ExceptionUtils;
-import com.qiuxs.salbum.frm.base.utils.JsonUtils;
+import com.qiuxs.frm.base.utils.ExceptionUtils;
+import com.qiuxs.frm.base.utils.JsonUtils;
+import com.qiuxs.frm.persistent.PageInfo;
 
 public abstract class BaseController {
 
@@ -20,6 +21,29 @@ public abstract class BaseController {
 	public String handlerException(Throwable e) {
 		JSONObject error = ExceptionUtils.logError(log, e);
 		return error.toJSONString();
+	}
+
+	/**
+	 * 根据参数生成分页信息
+	 *  
+	 * @author qiuxs  
+	 * @param params
+	 * @return
+	 */
+	public PageInfo preparePageInfo(Map<String, String> params) {
+		PageInfo pageInfo = new PageInfo();
+		
+		return pageInfo;
+	}
+
+	public String responseSuccess() {
+		return successResponse().toJSONString();
+	}
+
+	protected String responseVal(Object val) {
+		JSONObject response = this.successResponse();
+		response.put("data", JsonUtils.genJSON("val", val));
+		return response.toJSONString();
 	}
 
 	protected String responseRes(List<?> rows) {
@@ -34,7 +58,7 @@ public abstract class BaseController {
 	}
 
 	protected String responseRes(List<?> rows, Long count, Map<String, ? extends Number> sumrow) {
-		JSONObject res = this.defaultResponse();
+		JSONObject res = this.successResponse();
 		JSONObject data = new JSONObject();
 		data.put("rows", res);
 		data.put("count", count);
@@ -49,7 +73,7 @@ public abstract class BaseController {
 	 * @return
 	 */
 	protected String responseRes(Object res) {
-		JSONObject resp = this.defaultResponse();
+		JSONObject resp = this.successResponse();
 		resp.put("data", JsonUtils.toJSONObject(res));
 		return this.responseRes(resp);
 	}
@@ -67,7 +91,7 @@ public abstract class BaseController {
 	 * 构造默认响应JSON对象
 	 * @return
 	 */
-	protected JSONObject defaultResponse() {
+	protected JSONObject successResponse() {
 		JSONObject res = new JSONObject();
 		res.put("code", "0");
 		res.put("msg", "请求成功");

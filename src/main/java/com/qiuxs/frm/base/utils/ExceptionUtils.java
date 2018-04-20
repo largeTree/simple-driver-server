@@ -1,9 +1,9 @@
-package com.qiuxs.salbum.frm.base.utils;
+package com.qiuxs.frm.base.utils;
 
 import org.apache.logging.log4j.Logger;
 
 import com.alibaba.fastjson.JSONObject;
-import com.qiuxs.salbum.frm.base.ex.LogicException;
+import com.qiuxs.frm.base.ex.LogicException;
 
 public class ExceptionUtils {
 

@@ -1,4 +1,4 @@
-package com.qiuxs.salbum.frm.web;
+package com.qiuxs.frm.web;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;

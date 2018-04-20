@@ -1,4 +1,4 @@
-package com.qiuxs.salbum.frm.base.utils;
+package com.qiuxs.frm.base.utils;
 
 import java.util.List;
 
@@ -34,5 +34,16 @@ public class JsonUtils {
 
 	public static <T> List<T> parseArray(String str, Class<T> clz) {
 		return JSON.parseArray(str, clz);
+	}
+
+	public static Object genJSON(Object... obj) {
+		if (obj == null || obj.length == 0) {
+			return null;
+		}
+		JSONObject json = new JSONObject();
+		for (int i = 0; i < obj.length; i += 2) {
+			json.put(String.valueOf(obj[i]), obj[+1]);
+		}
+		return json;
 	}
 }

@@ -1,13 +1,11 @@
 package com.qiuxs.salbum.biz.entity;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.qiuxs.salbum.frm.persistent.entiry.IBaseEntity;
+import com.qiuxs.frm.persistent.entiry.AbstractEntity;
 
 /**
  * 用户
@@ -16,7 +14,7 @@ import com.qiuxs.salbum.frm.persistent.entiry.IBaseEntity;
  *
  */
 @Entity
-public class User implements IBaseEntity<Long> {
+public class User extends AbstractEntity<Long> {
 
 	private static final long serialVersionUID = 634070881511721130L;
 
@@ -35,9 +33,6 @@ public class User implements IBaseEntity<Long> {
 
 	/** 个性签名 */
 	private String sign;
-
-	/** 创建日期 */
-	private Date createdDate;
 
 	public Long getId() {
 		return id;
@@ -77,14 +72,6 @@ public class User implements IBaseEntity<Long> {
 
 	public void setSign(String sign) {
 		this.sign = sign;
-	}
-
-	public Date getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
 	}
 
 }

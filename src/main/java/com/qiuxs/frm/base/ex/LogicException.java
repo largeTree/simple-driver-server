@@ -1,4 +1,4 @@
-package com.qiuxs.salbum.frm.base.ex;
+package com.qiuxs.frm.base.ex;
 
 public class LogicException extends RuntimeException {
 

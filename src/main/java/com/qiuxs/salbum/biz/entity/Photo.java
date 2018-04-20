@@ -1,13 +1,11 @@
 package com.qiuxs.salbum.biz.entity;
 
-import java.util.Date;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-import com.qiuxs.salbum.frm.persistent.entiry.IBaseEntity;
+import com.qiuxs.frm.persistent.entiry.AbstractEntity;
 
 /**
  * 图片
@@ -16,7 +14,7 @@ import com.qiuxs.salbum.frm.persistent.entiry.IBaseEntity;
  *
  */
 @Entity
-public class Photo implements IBaseEntity<Long> {
+public class Photo extends AbstractEntity<Long> {
 
 	private static final long serialVersionUID = 4641363577704971844L;
 
@@ -39,8 +37,8 @@ public class Photo implements IBaseEntity<Long> {
 	/** HashKey */
 	private String hashKey;
 
-	/** 上传时间 */
-	private Date createdDate;
+	/** ID引用链 */
+	private String chainId;
 
 	public Long getId() {
 		return id;
@@ -90,12 +88,12 @@ public class Photo implements IBaseEntity<Long> {
 		this.hashKey = hashKey;
 	}
 
-	public Date getCreatedDate() {
-		return createdDate;
+	public String getChainId() {
+		return chainId;
 	}
 
-	public void setCreatedDate(Date createdDate) {
-		this.createdDate = createdDate;
+	public void setChainId(String chainId) {
+		this.chainId = chainId;
 	}
 
 }

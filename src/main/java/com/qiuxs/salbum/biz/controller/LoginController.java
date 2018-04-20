@@ -1,9 +1,9 @@
-package com.qiuxs.salbum.web.controller;
+package com.qiuxs.salbum.biz.controller;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.qiuxs.salbum.frm.web.controller.BaseController;
+import com.qiuxs.frm.web.controller.BaseController;
 
 @RestController
 @RequestMapping("/api")
