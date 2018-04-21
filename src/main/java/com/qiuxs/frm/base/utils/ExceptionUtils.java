@@ -89,4 +89,8 @@ public class ExceptionUtils {
 		}
 	}
 
+	public static RuntimeException unchecked(Exception e) {
+		return new RuntimeException(e);
+	}
+
 }

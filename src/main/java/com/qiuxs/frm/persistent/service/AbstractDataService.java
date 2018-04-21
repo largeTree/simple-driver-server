@@ -2,6 +2,7 @@ package com.qiuxs.frm.persistent.service;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -15,14 +16,15 @@ import com.qiuxs.frm.persistent.entiry.IBaseEntity;
 
 /**
  * 
- * 功能描述: <br/>  
- * 新增原因: TODO<br/>  
- * 新增日期: 2018年4月18日 下午9:16:44 <br/>  
- *  
- * @author qiuxs   
+ * 功能描述: <br/>
+ * 新增原因: TODO<br/>
+ * 新增日期: 2018年4月18日 下午9:16:44 <br/>
+ * 
+ * @author qiuxs
  * @version 1.0.0
  */
-public abstract class AbstractDataService<PK extends Serializable, T extends IBaseEntity<PK>, D extends IBaseDao<PK, T>> extends AbstractPropertyService<PK, T> implements IDataService<PK, T, D> {
+public abstract class AbstractDataService<PK extends Serializable, T extends IBaseEntity<PK>, D extends IBaseDao<PK, T>>
+		extends AbstractPropertyService<PK, T> implements IDataService<PK, T, D> {
 
 	public AbstractDataService(Class<PK> pkClass, Class<T> pojoClass) {
 		super(pkClass, pojoClass);
@@ -30,14 +32,15 @@ public abstract class AbstractDataService<PK extends Serializable, T extends IBa
 
 	/**
 	 * 获取Dao对象
-	 *  
-	 * @author qiuxs  
+	 * 
+	 * @author qiuxs
 	 * @return
 	 */
 	protected abstract D getDao();
 
 	/**
 	 * 删除一个对象
+	 * 
 	 * @see com.qiuxs.frm.persistent.service.IDataService#deleteById(java.lang.Object)
 	 */
 	@Override
@@ -47,8 +50,8 @@ public abstract class AbstractDataService<PK extends Serializable, T extends IBa
 
 	/**
 	 * 根据ID获取一行记录
-	 *  
-	 * @author qiuxs  
+	 * 
+	 * @author qiuxs
 	 * @param id
 	 * @return
 	 */
@@ -58,8 +61,8 @@ public abstract class AbstractDataService<PK extends Serializable, T extends IBa
 
 	/**
 	 * 根据ID获取多行记录
-	 *  
-	 * @author qiuxs  
+	 * 
+	 * @author qiuxs
 	 * @param ids
 	 * @return
 	 */
@@ -69,8 +72,8 @@ public abstract class AbstractDataService<PK extends Serializable, T extends IBa
 
 	/**
 	 * 使用Map作为参数查询
-	 *  
-	 * @author qiuxs  
+	 * 
+	 * @author qiuxs
 	 * @param params
 	 * @return
 	 */
@@ -92,8 +95,8 @@ public abstract class AbstractDataService<PK extends Serializable, T extends IBa
 
 	/**
 	 * 新增对象
-	 *  
-	 * @author qiuxs  
+	 * 
+	 * @author qiuxs
 	 * @param bean
 	 */
 	@Override
@@ -107,15 +110,24 @@ public abstract class AbstractDataService<PK extends Serializable, T extends IBa
 	}
 
 	protected boolean preCreate(T bean) {
+		initCreate(bean);
 		return true;
 	}
 
 	protected void postCreate(T bean) {
 	}
 
+	protected void initCreate(T bean) {
+		if (bean.getCreatedTime() == null) {
+			bean.setCreatedTime(new Date());
+		}
+	}
+	
 	/**
 	 * 更新对象
-	 * @see com.qiuxs.frm.persistent.service.IDataService#update(java.lang.Object, java.lang.Object)
+	 * 
+	 * @see com.qiuxs.frm.persistent.service.IDataService#update(java.lang.Object,
+	 *      java.lang.Object)
 	 */
 	@Override
 	public void update(T newBean) {
@@ -131,20 +143,25 @@ public abstract class AbstractDataService<PK extends Serializable, T extends IBa
 
 	/**
 	 * 更新前操作
-	 *  
-	 * @author qiuxs  
+	 * 
+	 * @author qiuxs
 	 * @param oldBean
 	 * @param newBean
 	 * @return
 	 */
 	protected boolean preUpdate(T oldBean, T newBean) {
+		initUpdate(oldBean,newBean);
 		return true;
+	}
+
+	private void initUpdate(T oldBean, T newBean) {
+		newBean.setUpdatedTime(new Date());
 	}
 
 	/**
 	 * 更新后操作
-	 *  
-	 * @author qiuxs  
+	 * 
+	 * @author qiuxs
 	 * @param oldBean
 	 * @param newBean
 	 */
@@ -163,8 +180,8 @@ public abstract class AbstractDataService<PK extends Serializable, T extends IBa
 
 	/**
 	 * 直接掉save时，调用此方法查询旧数据，默认返回Null，需要旧数据时需要自行实现此方法返回对应数据
-	 *  
-	 * @author qiuxs  
+	 * 
+	 * @author qiuxs
 	 * @param id
 	 * @return
 	 */
@@ -174,8 +191,8 @@ public abstract class AbstractDataService<PK extends Serializable, T extends IBa
 
 	/**
 	 * 保存前操作
-	 *  
-	 * @author qiuxs  
+	 * 
+	 * @author qiuxs
 	 * @param bean
 	 * @return
 	 */
@@ -184,8 +201,8 @@ public abstract class AbstractDataService<PK extends Serializable, T extends IBa
 
 	/**
 	 * 保存后操作
-	 *  
-	 * @author qiuxs  
+	 * 
+	 * @author qiuxs
 	 * @param bean
 	 */
 	protected void postSave(T oldBean, T newBean) {

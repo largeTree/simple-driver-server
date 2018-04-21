@@ -20,7 +20,9 @@ public class WebAppConfig extends WebMvcConfigurationSupport {
 
 	@Override
 	protected void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new ApiAuthInterceptor()).addPathPatterns("/api/**").excludePathPatterns("/api/login");
+		registry.addInterceptor(new ApiAuthInterceptor())
+			.addPathPatterns("/api/**")
+			.excludePathPatterns("/api/login", "/api/user/create");
 	}
 
 }

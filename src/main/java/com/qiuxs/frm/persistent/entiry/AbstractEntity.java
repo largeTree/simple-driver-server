@@ -2,6 +2,9 @@ package com.qiuxs.frm.persistent.entiry;
 
 import java.util.Date;
 
+import javax.persistence.MappedSuperclass;
+
+@MappedSuperclass
 public abstract class AbstractEntity<PK> implements IBaseEntity<PK> {
 
 	private static final long serialVersionUID = 6177696431975026769L;
