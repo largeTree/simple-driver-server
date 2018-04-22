@@ -103,7 +103,7 @@ public abstract class AbstractDataService<PK extends Serializable, T extends IBa
 	public void create(T bean) {
 		if (preCreate(bean)) {
 			this.preSave(null, bean);
-			this.getDao().save(bean);
+			this.getDao().saveAndFlush(bean);
 		}
 		postCreate(bean);
 		postSave(null, bean);
