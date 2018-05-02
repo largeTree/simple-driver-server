@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.qiuxs.frm.base.utils.ErrorCodeConstants;
+import com.qiuxs.frm.base.ex.ErrorCodeConstants;
 import com.qiuxs.frm.base.utils.ExceptionUtils;
 import com.qiuxs.frm.base.utils.JsonUtils;
 import com.qiuxs.frm.persistent.PageInfo;

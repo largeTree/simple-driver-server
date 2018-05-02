@@ -1,21 +1,25 @@
 package com.qiuxs.salbum.web.interceptors;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.Map;
 
-import org.springframework.web.servlet.HandlerInterceptor;
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.stereotype.Component;
+
+import com.qiuxs.frm.base.bean.UserLite;
+import com.qiuxs.frm.web.interceptors.AbstractApiAuthInterceptor;
 
 /**
  * 权限控制拦截器
  * @author qiuxs
  *
  */
-public class ApiAuthInterceptor implements HandlerInterceptor {
+@Component
+public class ApiAuthInterceptor extends AbstractApiAuthInterceptor {
 
 	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
-			throws Exception {
-		return true;
+	protected UserLite getUserLite(HttpServletRequest request, Map<String, String> params) {
+		return null;
 	}
 
 }

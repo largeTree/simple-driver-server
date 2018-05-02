@@ -4,10 +4,23 @@ import org.apache.logging.log4j.Logger;
 
 import com.alibaba.fastjson.JSONObject;
 import com.qiuxs.frm.base.ex.LogicException;
+import com.qiuxs.frm.base.ex.LoginException;
 
 public class ExceptionUtils {
 
 	public static final int DEFAULT_ERROR_CODE = -10;
+
+	public static final String ERROR_CODE = "error_code";
+	public static final String ERROR_MSG = "msg";
+
+	/**
+	 * 抛出默认登陆异常
+	 *  
+	 * @author qiuxs
+	 */
+	public static void throwLoginException() {
+		throw new LoginException();
+	}
 
 	/**
 	 * 使用指定的错误代码抛出逻辑异常
@@ -37,7 +50,7 @@ public class ExceptionUtils {
 	public static JSONObject logError(Logger log, Throwable e) {
 		JSONObject error = buildError(e);
 		if (log != null) {
-			log.error(error.getString("error_code"), e);
+			log.error(error.getString(ERROR_CODE), e);
 		}
 		return error;
 	}
@@ -52,11 +65,12 @@ public class ExceptionUtils {
 		JSONObject error = new JSONObject();
 		e = getRtootThrowable(e);
 		if (e instanceof LogicException) {
-			error.put("error_code", ((LogicException) e).getErrorCode());
-			error.put("msg", e.getLocalizedMessage());
+			error.put(ERROR_CODE, ((LogicException) e).getErrorCode());
+			error.put(ERROR_MSG, e.getLocalizedMessage());
 		} else {
 			int errorCode = genErrorCode();
-			error.put("msg", "服务端错误：" + errorCode);
+			error.put(ERROR_MSG, "服务端错误：" + errorCode);
+			error.put(ERROR_CODE, errorCode);
 		}
 		return error;
 	}
