@@ -8,4 +8,11 @@ import com.qiuxs.salbum.biz.entity.User;
 @Repository
 public interface UserDao extends IBaseDao<Long, User> {
 
+	/**
+	 * 根据code获取一个用户对象
+	 * @param userCode
+	 * @return
+	 */
+	public User getByCode(String userCode);
+
 }

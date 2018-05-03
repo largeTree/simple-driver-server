@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.ModelAndView;
 
-import com.qiuxs.frm.ThreadLocalVariableHolder;
+import com.qiuxs.frm.context.ThreadLocalVariableHolder;
 
 /**
  * 功能描述: 请求开始和结束时清理一下线程变量<br/>  

@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.qiuxs.frm.base.bean.UserLite;
 import com.qiuxs.frm.base.utils.RequestUtils;
-import com.qiuxs.frm.context.UserContext;
 
 /***
  * 
@@ -24,8 +23,7 @@ public abstract class AbstractApiAuthInterceptor extends AbstractHandlerIntercep
 
 	@Override
 	public final boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-		UserLite userLite = this.getUserLite(request, RequestUtils.getRequestParams(request));
-		UserContext.setUserLite(userLite);
+		this.getUserLite(request, RequestUtils.getRequestParams(request));
 		return super.preHandle(request, response, handler);
 	}
 
