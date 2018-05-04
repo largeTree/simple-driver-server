@@ -1,4 +1,4 @@
-package com.qiuxs.salbum.biz.entity;
+package com.qiuxs.sdriver.biz.entity;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;

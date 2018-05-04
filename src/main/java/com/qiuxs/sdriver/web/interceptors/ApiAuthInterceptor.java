@@ -1,4 +1,4 @@
-package com.qiuxs.salbum.web.interceptors;
+package com.qiuxs.sdriver.web.interceptors;
 
 import java.util.Map;
 

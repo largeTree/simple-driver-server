@@ -1,4 +1,4 @@
-package com.qiuxs.salbum.biz.controller;
+package com.qiuxs.sdriver.biz.controller;
 
 import javax.annotation.Resource;
 
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.qiuxs.frm.base.bean.UserLite;
 import com.qiuxs.frm.context.UserContext;
 import com.qiuxs.frm.web.controller.BaseController;
-import com.qiuxs.salbum.biz.service.UserService;
+import com.qiuxs.sdriver.biz.service.UserService;
 
 @RestController
 @RequestMapping(value = "/api", produces = "application/json; charset=UTF-8")

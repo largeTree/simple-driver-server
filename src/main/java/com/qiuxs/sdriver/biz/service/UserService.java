@@ -1,4 +1,4 @@
-package com.qiuxs.salbum.biz.service;
+package com.qiuxs.sdriver.biz.service;
 
 import java.util.Date;
 import java.util.UUID;
@@ -13,8 +13,8 @@ import com.qiuxs.frm.base.utils.Constants;
 import com.qiuxs.frm.base.utils.ExceptionUtils;
 import com.qiuxs.frm.base.utils.security.MD5Util;
 import com.qiuxs.frm.persistent.service.AbstractDataService;
-import com.qiuxs.salbum.biz.dao.UserDao;
-import com.qiuxs.salbum.biz.entity.User;
+import com.qiuxs.sdriver.biz.dao.UserDao;
+import com.qiuxs.sdriver.biz.entity.User;
 
 @Service
 public class UserService extends AbstractDataService<Long, User, UserDao> {
