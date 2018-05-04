@@ -23,6 +23,15 @@ public class ExceptionUtils {
 	}
 
 	/**
+	 * 登陆异常
+	 *  
+	 * @author qiuxs
+	 */
+	public static void throwLoginException(int errorCode, String msg) {
+		throw new LoginException();
+	}
+
+	/**
 	 * 使用指定的错误代码抛出逻辑异常
 	 * @param errorCode
 	 * @param msg
