@@ -19,8 +19,10 @@ import com.qiuxs.sdriver.biz.entity.User;
 @Service
 public class UserService extends AbstractDataService<Long, User, UserDao> {
 
+	private static final String TABLE_NAME = "user";
+	
 	public UserService() {
-		super(Long.class, User.class);
+		super(Long.class, User.class, TABLE_NAME);
 	}
 
 	@Resource

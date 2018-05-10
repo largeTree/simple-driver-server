@@ -26,8 +26,11 @@ import com.qiuxs.frm.persistent.entiry.IBaseEntity;
 public abstract class AbstractDataService<PK extends Serializable, T extends IBaseEntity<PK>, D extends IBaseDao<PK, T>>
 		extends AbstractPropertyService<PK, T> implements IDataService<PK, T, D> {
 
-	public AbstractDataService(Class<PK> pkClass, Class<T> pojoClass) {
+	private String tableName;
+
+	public AbstractDataService(Class<PK> pkClass, Class<T> pojoClass, String tableName) {
 		super(pkClass, pojoClass);
+		this.tableName = tableName;
 	}
 
 	/**
@@ -37,6 +40,14 @@ public abstract class AbstractDataService<PK extends Serializable, T extends IBa
 	 * @return
 	 */
 	protected abstract D getDao();
+	
+	/**
+	 * 获取表名
+	 * @return
+	 */
+	public String getTableName() {
+		return this.tableName;
+	}
 
 	/**
 	 * 删除一个对象
@@ -122,7 +133,7 @@ public abstract class AbstractDataService<PK extends Serializable, T extends IBa
 			bean.setCreatedTime(new Date());
 		}
 	}
-	
+
 	/**
 	 * 更新对象
 	 * 
@@ -150,7 +161,7 @@ public abstract class AbstractDataService<PK extends Serializable, T extends IBa
 	 * @return
 	 */
 	protected boolean preUpdate(T oldBean, T newBean) {
-		initUpdate(oldBean,newBean);
+		initUpdate(oldBean, newBean);
 		return true;
 	}
 
