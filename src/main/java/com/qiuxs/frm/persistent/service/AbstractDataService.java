@@ -6,10 +6,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.domain.Page;
-
 import com.qiuxs.frm.persistent.PageInfo;
 import com.qiuxs.frm.persistent.dao.IBaseDao;
 import com.qiuxs.frm.persistent.entiry.IBaseEntity;
@@ -67,7 +63,7 @@ public abstract class AbstractDataService<PK extends Serializable, T extends IBa
 	 * @return
 	 */
 	public T getById(PK id) {
-		return this.getDao().getOne(id);
+		return this.getDao().get(id);
 	}
 
 	/**
@@ -78,7 +74,7 @@ public abstract class AbstractDataService<PK extends Serializable, T extends IBa
 	 * @return
 	 */
 	public List<T> getByIds(Collection<PK> ids) {
-		return this.getDao().findAllById(ids);
+		return this.getDao().getByIds(ids);
 	}
 
 	/**
@@ -89,19 +85,7 @@ public abstract class AbstractDataService<PK extends Serializable, T extends IBa
 	 * @return
 	 */
 	public List<T> findByMap(final Map<String, Object> params, PageInfo pageInfo) {
-		Page<T> page = this.getDao().findAll(new Example<T>() {
-
-			@Override
-			public T getProbe() {
-				return null;
-			}
-
-			@Override
-			public ExampleMatcher getMatcher() {
-				return null;
-			}
-		}, pageInfo);
-		return page.getContent();
+		return this.getDao().list(params, pageInfo);
 	}
 
 	/**
@@ -114,7 +98,7 @@ public abstract class AbstractDataService<PK extends Serializable, T extends IBa
 	public void create(T bean) {
 		if (preCreate(bean)) {
 			this.preSave(null, bean);
-			this.getDao().saveAndFlush(bean);
+			this.getDao().insert(bean);
 		}
 		postCreate(bean);
 		postSave(null, bean);
@@ -146,7 +130,7 @@ public abstract class AbstractDataService<PK extends Serializable, T extends IBa
 		T oldBean = this.getByIdInner(newBean.getId());
 		if (preUpdate(oldBean, newBean)) {
 			preSave(oldBean, newBean);
-			this.getDao().save(oldBean);
+			this.getDao().update(oldBean);
 		}
 		postUpdate(oldBean, newBean);
 		postSave(oldBean, newBean);

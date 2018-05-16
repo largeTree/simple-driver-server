@@ -10,7 +10,6 @@ import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 
 import com.qiuxs.frm.context.ApplicationContextHolder;
-import com.qiuxs.frm.web.interceptors.AbstractApiAuthInterceptor;
 import com.qiuxs.frm.web.interceptors.AbstractHandlerInterceptor;
 import com.qiuxs.frm.web.interceptors.ThreadLocalVariableInterceptor;
 
@@ -32,13 +31,6 @@ public class WebAppConfig extends WebMvcConfigurationSupport {
 		ThreadLocalVariableInterceptor threadLocalVariableInterceptor = new ThreadLocalVariableInterceptor();
 		registry.addInterceptor(threadLocalVariableInterceptor).addPathPatterns("/**")
 				.order(threadLocalVariableInterceptor.getOrder());
-		// 添加会话拦截器
-		Optional<AbstractApiAuthInterceptor> apiAuthInterceptor = Optional
-				.ofNullable(ApplicationContextHolder.getBean(AbstractApiAuthInterceptor.class));
-		apiAuthInterceptor.ifPresent((interceptor) -> {
-			registry.addInterceptor(interceptor).addPathPatterns("/api/**")
-					.excludePathPatterns(interceptor.getLoginApiPath()).order(interceptor.getOrder());
-		});
 
 		// 自定义拦截器
 		Optional<List<AbstractHandlerInterceptor>> customerHandlerInterceptors = getCustomerHandlerInterceptors();
@@ -50,7 +42,7 @@ public class WebAppConfig extends WebMvcConfigurationSupport {
 					interceptorReg.addPathPatterns(paths);
 				});
 				Optional<List<String>> excludes = interceptor.getExcludes();
-				excludes.ifPresent(paths->{
+				excludes.ifPresent(paths -> {
 					interceptorReg.excludePathPatterns(paths);
 				});
 				interceptorReg.order(interceptor.getOrder());
@@ -60,6 +52,7 @@ public class WebAppConfig extends WebMvcConfigurationSupport {
 
 	/**
 	 * 根据抽象类型获取所有的自定义拦截器
+	 * 
 	 * @return
 	 */
 	private Optional<List<AbstractHandlerInterceptor>> getCustomerHandlerInterceptors() {

@@ -2,18 +2,10 @@ package com.qiuxs.frm.persistent.entiry;
 
 import java.util.Date;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-
-@MappedSuperclass
 public abstract class AbstractEntity<PK> implements IBaseEntity<PK> {
 
 	private static final long serialVersionUID = 6177696431975026769L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private PK id;
 
 	/** 创建时间 */
