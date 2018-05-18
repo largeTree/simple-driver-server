@@ -1,5 +1,9 @@
 package com.qiuxs.frm.base.ex;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
+
+@ResponseStatus(value = HttpStatus.UNAUTHORIZED)
 public class LoginException extends RuntimeException {
 
 	private static final long serialVersionUID = 8097214045978299511L;

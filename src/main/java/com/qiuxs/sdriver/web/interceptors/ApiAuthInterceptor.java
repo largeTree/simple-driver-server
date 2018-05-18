@@ -24,9 +24,9 @@ public class ApiAuthInterceptor extends AbstractApiAuthInterceptor {
 
 	@Override
 	protected UserLite getUserLite(HttpServletRequest request, Map<String, String> params) {
-		String sessionId = MapUtils.getStringMust(params, SESSION_ID);
-		UserLite userLite = UserContext.getUserLite(sessionId);
-		return userLite;
+		// String sessionId = MapUtils.getStringMust(params, SESSION_ID);
+		// UserLite userLite = UserContext.getUserLite(sessionId);
+		return new UserLite();
 	}
 
 }

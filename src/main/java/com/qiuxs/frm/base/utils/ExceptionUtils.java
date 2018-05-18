@@ -3,6 +3,7 @@ package com.qiuxs.frm.base.utils;
 import org.apache.logging.log4j.Logger;
 
 import com.alibaba.fastjson.JSONObject;
+import com.qiuxs.frm.base.ex.ErrorCodeConstants;
 import com.qiuxs.frm.base.ex.LogicException;
 import com.qiuxs.frm.base.ex.LoginException;
 
@@ -15,7 +16,7 @@ public class ExceptionUtils {
 
 	/**
 	 * 抛出默认登陆异常
-	 *  
+	 * 
 	 * @author qiuxs
 	 */
 	public static void throwLoginException() {
@@ -24,7 +25,7 @@ public class ExceptionUtils {
 
 	/**
 	 * 登陆异常
-	 *  
+	 * 
 	 * @author qiuxs
 	 */
 	public static void throwLoginException(int errorCode, String msg) {
@@ -33,6 +34,7 @@ public class ExceptionUtils {
 
 	/**
 	 * 使用指定的错误代码抛出逻辑异常
+	 * 
 	 * @param errorCode
 	 * @param msg
 	 */
@@ -73,7 +75,10 @@ public class ExceptionUtils {
 	public static JSONObject buildError(Throwable e) {
 		JSONObject error = new JSONObject();
 		e = getRtootThrowable(e);
-		if (e instanceof LogicException) {
+		if (e instanceof LoginException) {
+			error.put(ERROR_CODE, ErrorCodeConstants.SESSION_INVALID);
+			error.put(ERROR_MSG, e.getLocalizedMessage());
+		} else if (e instanceof LogicException) {
 			error.put(ERROR_CODE, ((LogicException) e).getErrorCode());
 			error.put(ERROR_MSG, e.getLocalizedMessage());
 		} else {

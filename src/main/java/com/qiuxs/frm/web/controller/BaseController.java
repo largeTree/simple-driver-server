@@ -25,14 +25,14 @@ public abstract class BaseController {
 
 	/**
 	 * 根据参数生成分页信息
-	 *  
-	 * @author qiuxs  
+	 * 
+	 * @author qiuxs
 	 * @param params
 	 * @return
 	 */
 	public PageInfo preparePageInfo(Map<String, String> params) {
 		PageInfo pageInfo = new PageInfo();
-		
+
 		return pageInfo;
 	}
 
@@ -60,9 +60,10 @@ public abstract class BaseController {
 	protected String responseRes(List<?> rows, Long count, Map<String, ? extends Number> sumrow) {
 		JSONObject res = this.successResponse();
 		JSONObject data = new JSONObject();
-		data.put("rows", res);
+		data.put("rows", rows);
 		data.put("count", count);
 		data.put("sumrow", sumrow);
+		res.put("data", data);
 		return this.responseRes(res);
 	}
 
@@ -80,15 +81,17 @@ public abstract class BaseController {
 
 	/**
 	 * 输出JSON相应
+	 * 
 	 * @param res
 	 * @return
 	 */
 	protected String responseRes(JSONObject res) {
-		return res.toJSONString();
+		return JsonUtils.toJSONString(res);
 	}
 
 	/**
 	 * 构造默认响应JSON对象
+	 * 
 	 * @return
 	 */
 	protected JSONObject successResponse() {
