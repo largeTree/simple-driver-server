@@ -6,10 +6,11 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Component;
 
-import com.qiuxs.frm.base.bean.UserLite;
-import com.qiuxs.frm.base.utils.MapUtils;
-import com.qiuxs.frm.context.UserContext;
-import com.qiuxs.frm.web.interceptors.AbstractApiAuthInterceptor;
+import com.qiuxs.cuteframework.core.basic.bean.UserLite;
+import com.qiuxs.cuteframework.core.basic.utils.MapUtils;
+import com.qiuxs.cuteframework.core.context.UserContext;
+import com.qiuxs.cuteframework.web.interceptors.AbstractApiAuthInterceptor;
+
 
 /**
  * 权限控制拦截器

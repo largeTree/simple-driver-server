@@ -3,7 +3,7 @@ package com.qiuxs.sdriver.biz.controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.qiuxs.frm.web.controller.BaseController;
+import com.qiuxs.cuteframework.web.controller.BaseController;
 
 @RestController
 @RequestMapping(value = "/api", produces = "application/json; charset=UTF-8")
