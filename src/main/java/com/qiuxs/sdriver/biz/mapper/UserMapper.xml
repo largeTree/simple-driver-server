@@ -58,9 +58,9 @@
 		</foreach>
 	</select>
 	
-	<select id="get" resultType="com.qiuxs.sdriver.biz.entity.User" >
+	<!-- <select id="get" resultType="com.qiuxs.sdriver.biz.entity.User" >
 		select <include refid="allFields" /> from user where id = #{id}
-	</select>
+	</select> -->
 	
 	<delete id="deleteById" parameterType="Long" >
 		delete from user where id = #{id}

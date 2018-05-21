@@ -14,3 +14,6 @@ spring:
 mybatis:
   mapper-locations:
   - classpath*:com/qiuxs/**/mapper/*Mapper.xml
+msg:
+  locations: #List<Map<String, String>>
+  - cn: msg/sdriver_cn.properties
