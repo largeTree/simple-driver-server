@@ -10,7 +10,7 @@ import com.qiuxs.cuteframework.web.controller.AbstractDataController;
 
 import com.qiuxs.sdriver.biz.dao.FileExtDao;
 import com.qiuxs.sdriver.biz.entity.FileExt;
-import com.qiuxs.sdriver.biz.service.FileExtService;
+import com.qiuxs.sdriver.biz.service.IFileExtService;
 
 /**
  * 控制器
@@ -20,14 +20,14 @@ import com.qiuxs.sdriver.biz.service.FileExtService;
  */
 @RestController
 @RequestMapping(value = "/api/fileext", produces = WebConstants.DEFAULT_REQUEST_PRODUCES)
-public class FileExtController extends AbstractDataController<Long, FileExt, FileExtDao, FileExtService> {
+public class FileExtController extends AbstractDataController<Long, FileExt, FileExtDao, IFileExtService> {
 
 	@Resource
-	private FileExtService fileextService;
+	private IFileExtService fileExtService;
 
 	@Override
-	protected FileExtService getService() {
-		return this.fileextService;
+	protected IFileExtService getService() {
+		return this.fileExtService;
 	}
 
 }

@@ -1,6 +1,5 @@
 package com.qiuxs.sdriver;
 
-import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.qiuxs.cuteframework.core.AbstractApplicationStarter;
@@ -18,6 +17,6 @@ import com.qiuxs.cuteframework.core.AbstractApplicationStarter;
 public class SimpleDriverApplication extends AbstractApplicationStarter {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SimpleDriverApplication.class, args);
+		run(SimpleDriverApplication.class, args);
 	}
 }

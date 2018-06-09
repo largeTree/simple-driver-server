@@ -12,5 +12,6 @@ spring:
       max-wait-millis: 10000
       validation-query: SELECT 1
 mybatis:
+  auto-refresh: true
   mapper-locations:
   - classpath*:com/qiuxs/**/mapper/*Mapper.xml

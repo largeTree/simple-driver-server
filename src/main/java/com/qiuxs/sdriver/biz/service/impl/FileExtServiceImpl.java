@@ -1,4 +1,4 @@
-package com.qiuxs.sdriver.biz.service;
+package com.qiuxs.sdriver.biz.service.impl;
 
 import java.util.List;
 
@@ -13,6 +13,7 @@ import com.qiuxs.cuteframework.core.persistent.service.filter.IServiceFilter;
 import com.qiuxs.cuteframework.core.persistent.service.filter.impl.IdGenerateFilter;
 import com.qiuxs.sdriver.biz.dao.FileExtDao;
 import com.qiuxs.sdriver.biz.entity.FileExt;
+import com.qiuxs.sdriver.biz.service.IFileExtService;
 
 /**
  * 服务类
@@ -21,11 +22,11 @@ import com.qiuxs.sdriver.biz.entity.FileExt;
  *
  */
 @Service
-public class FileExtService extends AbstractDataService<Long, FileExt, FileExtDao> {
+public class FileExtServiceImpl extends AbstractDataService<Long, FileExt, FileExtDao> implements IFileExtService {
 
 	private static final String TABLE_NAME = "file_ext";
 
-	public FileExtService() {
+	public FileExtServiceImpl() {
 		super(Long.class, FileExt.class, TABLE_NAME);
 	}
 

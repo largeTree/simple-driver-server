@@ -11,11 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qiuxs.cuteframework.web.WebConstants;
 import com.qiuxs.cuteframework.web.controller.AbstractDataController;
-
 import com.qiuxs.sdriver.biz.dao.FileDao;
 import com.qiuxs.sdriver.biz.dto.FileFullFDTO;
 import com.qiuxs.sdriver.biz.entity.File;
-import com.qiuxs.sdriver.biz.service.FileService;
+import com.qiuxs.sdriver.biz.service.IFileService;
 
 /**
  * 控制器
@@ -25,13 +24,13 @@ import com.qiuxs.sdriver.biz.service.FileService;
  */
 @RestController
 @RequestMapping(value = "/api/file", produces = WebConstants.DEFAULT_REQUEST_PRODUCES)
-public class FileController extends AbstractDataController<Long, File, FileDao, FileService> {
+public class FileController extends AbstractDataController<Long, File, FileDao, IFileService> {
 
 	@Resource
-	private FileService fileService;
+	private IFileService fileService;
 
 	@Override
-	protected FileService getService() {
+	protected IFileService getService() {
 		return this.fileService;
 	}
 

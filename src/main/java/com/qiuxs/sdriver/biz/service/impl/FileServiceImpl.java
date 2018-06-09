@@ -1,4 +1,4 @@
-package com.qiuxs.sdriver.biz.service;
+package com.qiuxs.sdriver.biz.service.impl;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.alibaba.fastjson.JSONObject;
 import com.qiuxs.cuteframework.core.basic.utils.BitUtils;
@@ -24,6 +25,7 @@ import com.qiuxs.sdriver.biz.dto.FileExtDTO;
 import com.qiuxs.sdriver.biz.dto.FileFullFDTO;
 import com.qiuxs.sdriver.biz.dto.IBaseFileExtDTO;
 import com.qiuxs.sdriver.biz.entity.File;
+import com.qiuxs.sdriver.biz.service.IFileService;
 
 /**
  * 服务类
@@ -32,7 +34,7 @@ import com.qiuxs.sdriver.biz.entity.File;
  *
  */
 @Service
-public class FileService extends AbstractDataService<Long, File, FileDao> {
+public class FileServiceImpl extends AbstractDataService<Long, File, FileDao> implements IFileService {
 
 	private static final String TABLE_NAME = "file";
 
@@ -41,7 +43,7 @@ public class FileService extends AbstractDataService<Long, File, FileDao> {
 		capabilityDtoMap.put(File.FILE, FileExtDTO.class);
 	}
 
-	public FileService() {
+	public FileServiceImpl() {
 		super(Long.class, File.class, TABLE_NAME);
 	}
 
@@ -53,10 +55,13 @@ public class FileService extends AbstractDataService<Long, File, FileDao> {
 		return this.fileDao;
 	}
 
+	@Override
+	@Transactional
 	public void saveFull(FileFullFDTO fileFullDto) {
 
 	}
 
+	@Override
 	public FileFullFDTO fromJSONDTO(String jsonData) {
 		FileFullFDTO fileFullDto = JsonUtils.parseObject(jsonData, FileFullFDTO.class);
 		JSONObject jFileFullDto = JsonUtils.parseJSONObject(jsonData);
