@@ -13,7 +13,7 @@ CREATE TABLE `file` (
 	`id` BIGINT(20) NOT NULL PRIMARY KEY COMMENT'主键',
 	`name` VARCHAR(256) NOT NULL COMMENT'文件名',
 	`parent_id` BIGINT(20) NOT NULL COMMENT'父级ID',
-	`capability` INT(32) NOT NULL COMMENT'能力位',
+	`capability` BIGINT(20) NOT NULL COMMENT'能力位',
 	`created_time` DATETIME NOT NULL COMMENT'创建日期',
 	`updated_time` DATETIME NOT NULL COMMENT'更新日期'
 );

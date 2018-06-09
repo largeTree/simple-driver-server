@@ -3,8 +3,8 @@ package com.qiuxs.sdriver.biz.entity;
 import com.qiuxs.cuteframework.core.persistent.entity.impl.AbstractEntity;
 
 /**
- * 实体类
- *	for table file
+ * 实体类 for table file
+ * 
  * @author qiuxs
  *
  */
@@ -13,6 +13,9 @@ public class File extends AbstractEntity<Long> {
 
 	private static final long serialVersionUID = -8405430686014808753L;
 
+	public static final long DIRECTORY = 1; // 1
+	public static final long FILE = 1 << 1; // 2
+
 	/** 文件名 */
 	private String name;
 
@@ -20,11 +23,11 @@ public class File extends AbstractEntity<Long> {
 	private Long parentId;
 
 	/** 能力位 */
-	private Integer capability;
-
+	private Long capability;
 
 	/**
 	 * get the 文件名
+	 * 
 	 * @return name
 	 */
 	public String getName() {
@@ -33,6 +36,7 @@ public class File extends AbstractEntity<Long> {
 
 	/**
 	 * set the 文件名
+	 * 
 	 * @param name
 	 */
 	public void setName(String name) {
@@ -41,6 +45,7 @@ public class File extends AbstractEntity<Long> {
 
 	/**
 	 * get the 父级ID
+	 * 
 	 * @return parentId
 	 */
 	public Long getParentId() {
@@ -49,6 +54,7 @@ public class File extends AbstractEntity<Long> {
 
 	/**
 	 * set the 父级ID
+	 * 
 	 * @param parentId
 	 */
 	public void setParentId(Long parentId) {
@@ -57,17 +63,19 @@ public class File extends AbstractEntity<Long> {
 
 	/**
 	 * get the 能力位
+	 * 
 	 * @return capability
 	 */
-	public Integer getCapability() {
+	public Long getCapability() {
 		return this.capability;
 	}
 
 	/**
 	 * set the 能力位
+	 * 
 	 * @param capability
 	 */
-	public void setCapability(Integer capability) {
+	public void setCapability(Long capability) {
 		this.capability = capability;
 	}
 
