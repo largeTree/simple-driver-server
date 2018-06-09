@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qiuxs.sdriver.biz.dao.FileExtDao">
+
+	<sql id="allFields">
+		id,
+		ext_name as extName,
+		size
+	</sql>
+
+	<sql id="insertFields">
+		id,
+		ext_name,
+		size
+	</sql>
+
+	<select id="list" resultType="com.qiuxs.sdriver.biz.entity.FileExt" >
+		select
+			<include refid="allFields" />
+		from file_ext
+		<where>
+			<include refid="comnWhere" />
+		</where>
+		<if test="orderBy != null" >
+			order by ${orderBy}
+			<if test="orderByDesc != null">
+				desc
+			</if>
+		</if>
+	</select>
+
+	<sql id="comnWhere">
+		<if test="id != null">
+			id = #{id}
+		</if>
+		<if test="extName != null">
+			 and ext_name = #{extName}
+		</if>
+		<if test="size != null">
+			 and size = #{size}
+		</if>
+	</sql>
+
+	<select id="getByIds" resultType="com.qiuxs.sdriver.biz.entity.FileExt" >
+		select <include refid="allFields" /> from user where id in
+		<foreach collection="list" item="item" open="(" separator="," close=")" >
+			#{item}
+		</foreach>
+	</select>
+
+	<select id="get" resultType="com.qiuxs.sdriver.biz.entity.FileExt" >
+		select <include refid="allFields" /> from file_ext where id = #{id}
+	</select>
+
+	<delete id="deleteById" parameterType="Long" >
+		delete from file_ext where id = #{id}
+	</delete>
+
+	<insert id="insert" parameterType="com.qiuxs.sdriver.biz.entity.FileExt">
+		insert into file_ext(<include refid="insertFields" />)
+		values(
+			#{id},
+			#{extName},
+			#{size}
+		)
+	</insert>
+
+	<insert id="insertBatch" parameterType="java.util.List" >
+		insert into file_ext(<include refid="insertFields" />)
+		values
+		<foreach collection="list" item="item" separator="," >
+			(
+				#{item.id},
+				#{item.extName},
+				#{item.size}
+			)
+		</foreach>
+	</insert>
+
+	<update id="update" parameterType="com.qiuxs.sdriver.biz.entity.FileExt" >
+		update file_ext <include refid="setComn" /> where id = #{id}
+	</update>
+
+	<sql id="setComn" >
+		<if test="id != null" >
+			id = #{id},
+		</if>
+		<if test="extName != null" >
+			ext_name = #{extName},
+		</if>
+		<if test="size != null" >
+			size = #{size}
+		</if>
+	</sql>
+</mapper>

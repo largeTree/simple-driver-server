@@ -8,9 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.qiuxs.cuteframework.web.WebConstants;
 import com.qiuxs.cuteframework.web.controller.AbstractDataController;
 
-import com.qiuxs.sdriver.biz.dao.UserDao;
-import com.qiuxs.sdriver.biz.entity.User;
-import com.qiuxs.sdriver.biz.service.UserService;
+import com.qiuxs.sdriver.biz.dao.FileDao;
+import com.qiuxs.sdriver.biz.entity.File;
+import com.qiuxs.sdriver.biz.service.FileService;
 
 /**
  * 控制器
@@ -19,15 +19,15 @@ import com.qiuxs.sdriver.biz.service.UserService;
  *
  */
 @RestController
-@RequestMapping(value = "/api/user", produces = WebConstants.DEFAULT_REQUEST_PRODUCES)
-public class UserController extends AbstractDataController<Long, User, UserDao, UserService> {
+@RequestMapping(value = "/api/file", produces = WebConstants.DEFAULT_REQUEST_PRODUCES)
+public class FileController extends AbstractDataController<Long, File, FileDao, FileService> {
 
 	@Resource
-	private UserService userService;
+	private FileService fileService;
 
 	@Override
-	protected UserService getService() {
-		return this.userService;
+	protected FileService getService() {
+		return this.fileService;
 	}
 
 }

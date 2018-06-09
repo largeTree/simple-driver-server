@@ -1,10 +1,9 @@
 package com.qiuxs.sdriver.biz.dao;
 
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import com.qiuxs.cuteframework.core.persistent.dao.IBaseDao;
-import com.qiuxs.sdriver.biz.entity.User;
+import com.qiuxs.sdriver.biz.entity.File;
 
 /**
  * Dao接口
@@ -13,8 +12,6 @@ import com.qiuxs.sdriver.biz.entity.User;
  *
  */
 @Repository
-public interface UserDao extends IBaseDao<Long, User> {
-
-	User getByBizKeys(@Param("code") String code);
+public interface FileDao extends IBaseDao<Long, File> {
 
 }
