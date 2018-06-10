@@ -13,5 +13,5 @@ spring:
       validation-query: SELECT 1
 mybatis:
   auto-refresh: true
-  mapper-locations:
-  - classpath*:com/qiuxs/**/mapper/*Mapper.xml
+  mapper-locations: 
+    - classpath*:com/qiuxs/**/mapper/*Mapper.xml

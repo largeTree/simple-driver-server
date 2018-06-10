@@ -24,7 +24,7 @@
 	</Appenders>
 
 	<Loggers>
- 		<Logger name="com.qiuxs" level="info">
+ 		<Logger name="com.qiuxs" level="debug">
 		</Logger>
 		<!-- <Logger name="com.qiuxs.core.log.logger.Nagios" level="info">
 			<AppenderRef ref="NagiosRollingFile" />
