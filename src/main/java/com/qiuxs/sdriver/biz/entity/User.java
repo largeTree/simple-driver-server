@@ -1,6 +1,6 @@
 package com.qiuxs.sdriver.biz.entity;
 
-import com.qiuxs.cuteframework.core.persistent.entity.impl.AbstractEntity;
+import com.qiuxs.cuteframework.core.persistent.database.entity.impl.AbstractEntity;
 
 /**
  * 实体类

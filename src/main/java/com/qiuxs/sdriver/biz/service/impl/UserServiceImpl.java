@@ -7,11 +7,11 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.qiuxs.cuteframework.core.persistent.modal.BaseField;
-import com.qiuxs.cuteframework.core.persistent.modal.PropertyWrapper;
-import com.qiuxs.cuteframework.core.persistent.service.AbstractDataService;
-import com.qiuxs.cuteframework.core.persistent.service.filter.IServiceFilter;
-import com.qiuxs.cuteframework.core.persistent.service.filter.impl.IdGenerateFilter;
+import com.qiuxs.cuteframework.core.persistent.database.modal.BaseField;
+import com.qiuxs.cuteframework.core.persistent.database.modal.PropertyWrapper;
+import com.qiuxs.cuteframework.core.persistent.database.service.AbstractDataService;
+import com.qiuxs.cuteframework.core.persistent.database.service.filter.IServiceFilter;
+import com.qiuxs.cuteframework.core.persistent.database.service.filter.impl.IdGenerateFilter;
 import com.qiuxs.sdriver.biz.dao.UserDao;
 import com.qiuxs.sdriver.biz.entity.User;
 import com.qiuxs.sdriver.biz.service.IUserService;
@@ -43,6 +43,15 @@ public class UserServiceImpl extends AbstractDataService<Long, User, UserDao> im
 	public User getByBizKeys(String code) {
 		return this.getDao().getByBizKeys(code);
 	}
+	
+	@Override
+	public String getCaption(Long code) {
+		User user = this.getById(code);
+		if (user != null) {
+			return user.getName();
+		}
+		return String.valueOf(code);
+	}
 
 	@Override
 	protected void initServiceFilters(List<IServiceFilter<Long, User>> serviceFilters) {
@@ -53,25 +62,25 @@ public class UserServiceImpl extends AbstractDataService<Long, User, UserDao> im
 	protected void initProps(List<PropertyWrapper<?>> props) {
 		PropertyWrapper<?> prop = null;
 
-		prop = new PropertyWrapper<Long>(new BaseField("id", "主键", "Long"), null);
+		prop = new PropertyWrapper<Long>(new BaseField("id", "主键", Long.class), null);
 		props.add(prop);
 
-		prop = new PropertyWrapper<String>(new BaseField("code", "登陆名", "String"), null);
+		prop = new PropertyWrapper<String>(new BaseField("code", "登陆名", String.class), null);
 		props.add(prop);
 
-		prop = new PropertyWrapper<String>(new BaseField("name", "用户名", "String"), null);
+		prop = new PropertyWrapper<String>(new BaseField("name", "用户名", String.class), null);
 		props.add(prop);
 
-		prop = new PropertyWrapper<String>(new BaseField("password", "密码", "String"), null);
+		prop = new PropertyWrapper<String>(new BaseField("password", "密码", String.class), null);
 		props.add(prop);
 
-		prop = new PropertyWrapper<String>(new BaseField("sign", "个性签名", "String"), null);
+		prop = new PropertyWrapper<String>(new BaseField("sign", "个性签名", String.class), null);
 		props.add(prop);
 
-		prop = new PropertyWrapper<Date>(new BaseField("createdTime", "创建日期", "Date"), null);
+		prop = new PropertyWrapper<Date>(new BaseField("createdTime", "创建日期", Date.class), null);
 		props.add(prop);
 
-		prop = new PropertyWrapper<Date>(new BaseField("updatedTime", "更新日期", "Date"), null);
+		prop = new PropertyWrapper<Date>(new BaseField("updatedTime", "更新日期", Date.class), null);
 		props.add(prop);
 
 	}

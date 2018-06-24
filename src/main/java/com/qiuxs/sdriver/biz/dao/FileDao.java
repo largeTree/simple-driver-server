@@ -2,7 +2,7 @@ package com.qiuxs.sdriver.biz.dao;
 
 import org.springframework.stereotype.Repository;
 
-import com.qiuxs.cuteframework.core.persistent.dao.IBaseDao;
+import com.qiuxs.cuteframework.core.persistent.database.dao.IBaseDao;
 import com.qiuxs.sdriver.biz.entity.File;
 
 /**

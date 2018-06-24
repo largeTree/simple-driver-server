@@ -11,7 +11,7 @@ import com.qiuxs.cuteframework.web.controller.BaseController;
 import com.qiuxs.sdriver.biz.service.IUserAuthService;
 
 @RestController
-@RequestMapping(value = "/api", produces = WebConstants.DEFAULT_REQUEST_PRODUCES)
+@RequestMapping(value = WebConstants.DEFAULT_API_PREFIX, produces = WebConstants.DEFAULT_REQUEST_PRODUCES)
 public class LoginController extends BaseController {
 
 	@Resource

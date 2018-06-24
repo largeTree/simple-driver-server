@@ -18,7 +18,7 @@ import com.qiuxs.sdriver.biz.service.IUserService;
  *
  */
 @RestController
-@RequestMapping(value = "/api/user", produces = WebConstants.DEFAULT_REQUEST_PRODUCES)
+@RequestMapping(value = WebConstants.DEFAULT_API_PREFIX + "/user", produces = WebConstants.DEFAULT_REQUEST_PRODUCES)
 public class UserController extends AbstractDataController<Long, User, UserDao, IUserService> {
 
 	@Resource

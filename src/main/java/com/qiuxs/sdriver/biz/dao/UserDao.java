@@ -3,7 +3,7 @@ package com.qiuxs.sdriver.biz.dao;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import com.qiuxs.cuteframework.core.persistent.dao.IBaseDao;
+import com.qiuxs.cuteframework.core.persistent.database.dao.IBaseDao;
 import com.qiuxs.sdriver.biz.entity.User;
 
 /**

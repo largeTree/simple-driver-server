@@ -1,7 +1,7 @@
 package com.qiuxs.sdriver.biz.dto;
 
-import java.io.Serializable;
+import com.qiuxs.cuteframework.core.persistent.database.entity.IEntity;
 
-public interface IBaseFileExtDTO extends Serializable {
+public interface IBaseFileExtDTO extends IEntity<Long> {
 
 }

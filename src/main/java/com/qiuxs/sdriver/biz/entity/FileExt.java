@@ -1,7 +1,8 @@
 package com.qiuxs.sdriver.biz.entity;
 
 
-import com.qiuxs.cuteframework.core.persistent.entity.impl.AbstractEntity;
+import com.qiuxs.cuteframework.core.persistent.database.entity.impl.AbstractEntity;
+import com.qiuxs.sdriver.biz.dto.IBaseFileExtDTO;
 
 /**
  * 实体类
@@ -10,7 +11,7 @@ import com.qiuxs.cuteframework.core.persistent.entity.impl.AbstractEntity;
  *
  */
 
-public class FileExt extends AbstractEntity<Long> {
+public class FileExt extends AbstractEntity<Long> implements IBaseFileExtDTO {
 
 	private static final long serialVersionUID = -3405929277354712504L;
 

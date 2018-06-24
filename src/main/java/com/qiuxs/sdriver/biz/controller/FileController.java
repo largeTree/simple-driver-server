@@ -23,7 +23,7 @@ import com.qiuxs.sdriver.biz.service.IFileService;
  *
  */
 @RestController
-@RequestMapping(value = "/api/file", produces = WebConstants.DEFAULT_REQUEST_PRODUCES)
+@RequestMapping(value = WebConstants.DEFAULT_API_PREFIX + "/file", produces = WebConstants.DEFAULT_REQUEST_PRODUCES)
 public class FileController extends AbstractDataController<Long, File, FileDao, IFileService> {
 
 	@Resource
@@ -34,11 +34,11 @@ public class FileController extends AbstractDataController<Long, File, FileDao, 
 		return this.fileService;
 	}
 
-	@PostMapping("/saveFull")
+	@PostMapping("/createFull")
 	public String saveFull(Map<String, String> params, @RequestParam("jsonParam") String jsonData) {
 		FileFullFDTO fileFullDto = this.getService().fromJSONDTO(jsonData);
-		this.getService().saveFull(fileFullDto);
-		return super.responseSuccess();
+		this.getService().createFull(fileFullDto);
+		return super.responseVal(fileFullDto.getFile().getId());
 	}
 
 }

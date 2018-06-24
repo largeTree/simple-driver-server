@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.qiuxs.cuteframework.web.WebConstants;
 import com.qiuxs.cuteframework.web.controller.AbstractDataController;
-
 import com.qiuxs.sdriver.biz.dao.FileExtDao;
 import com.qiuxs.sdriver.biz.entity.FileExt;
 import com.qiuxs.sdriver.biz.service.IFileExtService;
@@ -19,7 +18,7 @@ import com.qiuxs.sdriver.biz.service.IFileExtService;
  *
  */
 @RestController
-@RequestMapping(value = "/api/fileext", produces = WebConstants.DEFAULT_REQUEST_PRODUCES)
+@RequestMapping(value = WebConstants.DEFAULT_API_PREFIX + "/fileext", produces = WebConstants.DEFAULT_REQUEST_PRODUCES)
 public class FileExtController extends AbstractDataController<Long, FileExt, FileExtDao, IFileExtService> {
 
 	@Resource

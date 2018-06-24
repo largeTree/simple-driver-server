@@ -1,6 +1,6 @@
 package com.qiuxs.sdriver.biz.entity;
 
-import com.qiuxs.cuteframework.core.persistent.entity.impl.AbstractEntity;
+import com.qiuxs.cuteframework.core.persistent.database.entity.impl.AbstractEntity;
 
 /**
  * 实体类 for table file
@@ -24,6 +24,12 @@ public class File extends AbstractEntity<Long> {
 
 	/** 能力位 */
 	private Long capability;
+
+	/** 深度 */
+	private Integer level;
+
+	/** 深度编码 */
+	private String levelCode;
 
 	/**
 	 * get the 文件名
@@ -77,6 +83,42 @@ public class File extends AbstractEntity<Long> {
 	 */
 	public void setCapability(Long capability) {
 		this.capability = capability;
+	}
+
+	/**
+	 * get the 深度
+	 * 
+	 * @return level
+	 */
+	public Integer getLevel() {
+		return level;
+	}
+
+	/**
+	 * set the 深度
+	 * 
+	 * @param level
+	 */
+	public void setLevel(Integer level) {
+		this.level = level;
+	}
+
+	/**
+	 * get the 深度编码
+	 * 
+	 * @return levelCode
+	 */
+	public String getLevelCode() {
+		return levelCode;
+	}
+
+	/**
+	 * set the 深度编码
+	 * 
+	 * @param levelCode
+	 */
+	public void setLevelCode(String levelCode) {
+		this.levelCode = levelCode;
 	}
 
 }

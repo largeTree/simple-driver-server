@@ -6,11 +6,11 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
-import com.qiuxs.cuteframework.core.persistent.modal.BaseField;
-import com.qiuxs.cuteframework.core.persistent.modal.PropertyWrapper;
-import com.qiuxs.cuteframework.core.persistent.service.AbstractDataService;
-import com.qiuxs.cuteframework.core.persistent.service.filter.IServiceFilter;
-import com.qiuxs.cuteframework.core.persistent.service.filter.impl.IdGenerateFilter;
+import com.qiuxs.cuteframework.core.persistent.database.modal.BaseField;
+import com.qiuxs.cuteframework.core.persistent.database.modal.PropertyWrapper;
+import com.qiuxs.cuteframework.core.persistent.database.service.AbstractDataService;
+import com.qiuxs.cuteframework.core.persistent.database.service.filter.IServiceFilter;
+import com.qiuxs.cuteframework.core.persistent.database.service.filter.impl.IdGenerateFilter;
 import com.qiuxs.sdriver.biz.dao.FileExtDao;
 import com.qiuxs.sdriver.biz.entity.FileExt;
 import com.qiuxs.sdriver.biz.service.IFileExtService;
@@ -47,13 +47,13 @@ public class FileExtServiceImpl extends AbstractDataService<Long, FileExt, FileE
 	protected void initProps(List<PropertyWrapper<?>> props) {
 		PropertyWrapper<?> prop = null;
 
-		prop = new PropertyWrapper<Long>(new BaseField("id", "主键", "Long"), null);
+		prop = new PropertyWrapper<Long>(new BaseField("id", "主键", Long.class), null);
 		props.add(prop);
 
-		prop = new PropertyWrapper<String>(new BaseField("extName", "文件扩展名", "String"), null);
+		prop = new PropertyWrapper<String>(new BaseField("extName", "文件扩展名", String.class), null);
 		props.add(prop);
 
-		prop = new PropertyWrapper<Long>(new BaseField("size", "文件大小", "Long"), null);
+		prop = new PropertyWrapper<Long>(new BaseField("size", "文件大小", Long.class), null);
 		props.add(prop);
 
 	}
