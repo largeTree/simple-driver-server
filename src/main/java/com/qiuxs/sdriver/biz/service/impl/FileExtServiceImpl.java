@@ -16,7 +16,7 @@ import com.qiuxs.sdriver.biz.entity.FileExt;
 import com.qiuxs.sdriver.biz.service.IFileExtService;
 
 /**
- * 服务类
+ * 文件扩展服务类
  *
  * @author qiuxs
  *

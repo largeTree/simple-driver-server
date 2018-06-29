@@ -34,7 +34,7 @@ import com.qiuxs.sdriver.biz.service.IFileService;
 import com.qiuxs.sdriver.biz.service.IUserService;
 
 /**
- * 服务类
+ * 文件服务类
  *
  * @author qiuxs
  *
